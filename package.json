@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "next build && next export",
+    "start": "npm run build && npx serve@latest out",
+    "lint": "next lint",
+    "serve": "npx serve@latest out",
+    "watch": "nodemon --watch app --watch components --ext js,jsx,ts,tsx,css --exec 'npm run build'",
+    "dev:watch": "concurrently \"npm run watch\" \"npm run serve\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -69,5 +72,9 @@
     "typescript": "5.2.2",
     "vaul": "^0.9.9",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9"
   }
 }
