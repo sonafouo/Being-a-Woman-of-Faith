@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, HTMLMotionProps } from "framer-motion"
 import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Sparkles } from "lucide-react";
-import Image from 'next/image';
+import { Heart, Book, Users } from "lucide-react";
 
 type MotionDivProps = HTMLMotionProps<"div"> & { className?: string };
 type MotionH1Props = HTMLMotionProps<"h1"> & { className?: string };
@@ -13,6 +13,24 @@ type MotionPProps = HTMLMotionProps<"p"> & { className?: string };
 const MotionDiv: React.FC<MotionDivProps> = motion.div;
 const MotionH1: React.FC<MotionH1Props> = motion.h1;
 const MotionP: React.FC<MotionPProps> = motion.p;
+
+const categories = [
+  {
+    icon: <Heart className="w-6 h-6" />,
+    title: "Teenager",
+    description: "Navigate your faith journey during these transformative years",
+  },
+  {
+    icon: <Book className="w-6 h-6" />,
+    title: "Young Woman",
+    description: "Discover God's purpose for your single season",
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: "Married Women",
+    description: "Build a Christ-centered marriage and home",
+  },
+];
 
 export default function Home() {
   useEffect(() => {
@@ -77,7 +95,12 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Sparkles className="w-8 h-8 text-blue-600" />
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+              className="focus:outline-none"
+            >
+              <Sparkles className="w-8 h-8 text-blue-600" />
+            </button>
             <div className="flex space-x-8">
               <a
                 href="#mission"
@@ -195,6 +218,34 @@ export default function Home() {
               you begin from this foundation as you follow us.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section ref={ref} className="py-24 bg-gradient-to-b from-white to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {categories.map((category, index) => (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-blue-600">
+                  {category.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
+                <p className="text-gray-600">{category.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </main>
