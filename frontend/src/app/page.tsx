@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, HTMLMotionProps } from "framer-motion"
 import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Sparkles } from "lucide-react";
+import Image from 'next/image';
 
 type MotionDivProps = HTMLMotionProps<"div"> & { className?: string };
 type MotionH1Props = HTMLMotionProps<"h1"> & { className?: string };
@@ -84,8 +85,10 @@ export default function Home() {
       {/* Hero Section */}
       <section
         ref={containerRef}
-        className="min-h-screen relative overflow-hidden"
+        className="min-h-screen relative overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url("/images/woman-of-faith.jpg")' }}
       >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <MotionDiv
           style={{ y, opacity }}
           className="absolute inset-0 flex items-center justify-center"
@@ -95,7 +98,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900"
+              className="text-5xl md:text-7xl font-bold tracking-tight text-white"
             >
               Being a Woman of Faith
             </MotionH1>
@@ -103,7 +106,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-xl text-gray-200 max-w-2xl mx-auto"
             >
               A life full of purpose
             </MotionP>
