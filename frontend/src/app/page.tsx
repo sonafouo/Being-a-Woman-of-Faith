@@ -38,6 +38,15 @@ export default function Home() {
     threshold: 0.1,
   });
 
+  const smoothScroll = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error(`Element with ID "${elementId}" not found.`);
+    }
+  };
+
   return (
     <main className="bg-gradient-to-b from-blue-50 to-green-50 text-gray-800">
       {/* API Message Section */}
@@ -55,12 +64,14 @@ export default function Home() {
             <div className="flex space-x-8">
               <a
                 href="#mission"
+                onClick={(e) => { e.preventDefault(); smoothScroll('mission'); }}
                 className="text-sm font-medium hover:text-blue-600 transition-colors"
               >
                 Mission
               </a>
               <a
                 href="#gospel"
+                onClick={(e) => { e.preventDefault(); smoothScroll('gospel'); }}
                 className="text-sm font-medium hover:text-blue-600 transition-colors"
               >
                 Gospel
