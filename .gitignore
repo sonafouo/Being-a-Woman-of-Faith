@@ -43,3 +43,15 @@ node_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
 
 # Specific to this project
 bfg-1.14.0.jar
+
+# TypeScript
+*.tsbuildinfo
+
+# Next.js
+next-env.d.ts
+
+# Test coverage
+coverage/
+
+# Backup files
+*.bak
