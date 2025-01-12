@@ -41,12 +41,12 @@ export default function Home() {
   return (
     <main className="bg-gradient-to-b from-blue-50 to-green-50 text-gray-800">
       {/* API Message Section */}
-      <section className="py-8 bg-white">
+      {/* <section className="py-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold mb-4">API Message</h2>
           <p className="text-lg text-gray-600">{apiMessage || "Loading..."}</p>
         </div>
-      </section>
+      </section> */}
       {/* Sticky Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
