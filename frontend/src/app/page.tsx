@@ -15,6 +15,16 @@ const MotionH1: React.FC<MotionH1Props> = motion.h1;
 const MotionP: React.FC<MotionPProps> = motion.p;
 
 export default function Home() {
+  useEffect(() => {
+    // Disable automatic scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Restore scroll position on page load
+    window.scrollTo(0, sessionStorage.getItem('scrollPosition') ? parseInt(sessionStorage.getItem('scrollPosition') as string) : 0);
+  }, []);
+
   const [apiMessage, setApiMessage] = useState("");
 
   useEffect(() => {
@@ -22,6 +32,13 @@ export default function Home() {
       .then(response => response.json())
       .then(data => setApiMessage(data.message))
       .catch(error => console.error('Error fetching API:', error));
+
+    // Save scroll position on page unload
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    });
+
+    return () => window.removeEventListener('beforeunload', () => {});
   }, []);
 
   const containerRef = useRef(null);

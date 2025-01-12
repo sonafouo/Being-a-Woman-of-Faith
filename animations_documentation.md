@@ -1,6 +1,6 @@
 # Page Animation Effects in the Project
 
-This document outlines the various page animation effects implemented in the project, primarily within the `app/page.tsx` file. These animations enhance the user experience by adding smooth and engaging transitions.
+This document outlines the various page animation effects implemented in the project, primarily within the `app/page.tsx` and `app/layout.tsx` files. These animations enhance the user experience by adding smooth and engaging transitions.
 
 ## Libraries Used
 
