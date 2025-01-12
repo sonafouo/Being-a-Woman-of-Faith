@@ -1,7 +1,45 @@
 
+# Dependencies
+node_modules/
+package-lock.json
+
+# Next.js
+.next/
+out/
+
+# Build outputs
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+
 # Large files
 node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
 node_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
 
-# Node modules
-node_modules/
+# Specific to this project
+bfg-1.14.0.jar
