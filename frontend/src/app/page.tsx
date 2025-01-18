@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Sparkles } from "lucide-react";
 import { Heart, Book, Users } from "lucide-react";
+import Link from "next/link";
 
 type MotionDivProps = HTMLMotionProps<"div"> & { className?: string };
 type MotionH1Props = HTMLMotionProps<"h1"> & { className?: string };
@@ -19,16 +20,19 @@ const categories = [
     icon: <Heart className="w-6 h-6" />,
     title: "Teenager",
     description: "Navigate your faith journey during these transformative years",
+    link: "/teenagers",
   },
   {
     icon: <Book className="w-6 h-6" />,
     title: "Young Woman",
     description: "Discover God's purpose for your single season",
+    link: "/young-women",
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Married Women",
     description: "Build a Christ-centered marriage and home",
+    link: "/married-women",
   },
 ];
 
@@ -231,19 +235,20 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {categories.map((category, index) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-blue-600">
-                  {category.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-                <p className="text-gray-600">{category.description}</p>
-              </motion.div>
+              <Link href={category.link} key={category.title}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                >
+                  <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-blue-600">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
+                  <p className="text-gray-600">{category.description}</p>
+                </motion.div>
+              </Link>
             ))}
           </motion.div>
         </div>
