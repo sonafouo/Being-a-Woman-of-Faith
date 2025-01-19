@@ -1,12 +1,10 @@
-tsx
-// frontend/src/app/teenagers/[id].tsx
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const TeenagerPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const params = useParams();
+  const id = params.id;
   const [teenager, setTeenager] = useState(null);
 
   useEffect(() => {
@@ -33,17 +31,18 @@ const TeenagerPage = () => {
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-      className="teenager-page"
-    >
+    <div className="teenager-page">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
       <h1>{teenager.name}</h1>
       <img src={teenager.image} alt={teenager.name} />
       <p>{teenager.bio}</p>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
