@@ -1,20 +1,26 @@
 "use client";
 
-import { motion, useScroll, useTransform, HTMLMotionProps } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, HTMLMotionProps, MotionProps } from "framer-motion";
+import { useRef, useEffect, useState, ReactNode } from "react";
 import { useInView } from "react-intersection-observer";
-import { Sparkles } from "lucide-react";
-import { Heart, Book, Users } from "lucide-react";
+import { Sparkles, Heart, Book, Users } from "lucide-react";
 import Link from "next/link";
 import styled from 'styled-components';
-
+// import localFont from "next/font/local";
 type MotionDivProps = HTMLMotionProps<"div"> & { className?: string };
 type MotionH1Props = HTMLMotionProps<"h1"> & { className?: string };
-type MotionPProps = HTMLMotionProps<"p"> & { className?: string };
+type MotionPProps = HTMLMotionProps<"p"> & { className?: string, children?: ReactNode};
 
 const MotionDiv: React.FC<MotionDivProps> = motion.div;
 const MotionH1: React.FC<MotionH1Props> = motion.h1;
 const MotionP: React.FC<MotionPProps> = motion.p;
+
+// const myFont = localFont({
+//   src: "../public/fonts/greatvibes-regular.otf",
+//   display: "swap",
+// });
+
+
 
 const categories = [
   {
@@ -46,7 +52,7 @@ const StyledCard = styled.div`
     border-radius: 8px;
     backdrop-filter: blur(5px);
     border-bottom: 3px solid rgba(255, 255, 255, 0.440);
-    border-left: 2px rgba(255, 255, 255, 0.545) outset;
+    border-left: 2px rgba(255, 255, 255, 0.545) inset;
     box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
     transform: skewX(10deg);
     transition: .4s;
@@ -55,7 +61,7 @@ const StyledCard = styled.div`
     font-size: 1.2rem; /* Increase font size */
   }
 
-  .card:hover {
+  .card:hover { 
     height: 300px; /* Increased hover height */
     transform: skew(0deg);
   }
@@ -94,10 +100,11 @@ const StyledCard = styled.div`
 
   .card h1 {
     text-align: center;
-    margin: 1.3rem;
-    color: black; /* Ensure text color is black */
-    text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
-  }
+    margin: 1.3rem 0.3rem 0.3rem;
+    color: #2a2a2a; /* Ensure text color is black */
+    font-family: 'Great Vibes';
+    text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573); /* Added a shadow */
+  } 
 `;
 
 export default function Home() {
@@ -151,7 +158,8 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-gradient-to-b from-blue-50 to-green-50 text-gray-800">
+    <>
+      <main className="bg-gradient-to-b from-blue-50 to-green-50 text-gray-800">
       {/* API Message Section */}
       {/* <section className="py-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -185,11 +193,14 @@ export default function Home() {
                 Gospel
               </a>
               <a
-                href="/resources"
+                href="#categories"
+                onClick={(e) => { e.preventDefault(); smoothScroll('categories'); }}
                 className="text-sm font-medium hover:text-blue-600 transition-colors"
               >
-                Resources
+                Who am I
               </a>
+
+
             </div>
             <a
               href="#join-us"
@@ -201,7 +212,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section */}  
       <section
         ref={containerRef}
         className="min-h-screen relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -234,7 +245,7 @@ export default function Home() {
       </section>
 
       {/* Mission Section */}
-      <section id="mission" className="py-20 bg-white">
+      <section id="mission" className="py-20 bg-gradient-to-b from-pink-50 to-purple-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-8">Our Mission</h2>
           <p className="text-lg text-gray-600 mb-6">
@@ -242,25 +253,28 @@ export default function Home() {
             God through the Lord Jesus, desiring to empower women with wisdom to
             live a fulfilled life no matter what stage she may found herself.
           </p>
+          <MotionP className="text-lg text-gray-600 mb-6">
+            <p className="font-serif">
+              Being rooted in Christ our Lord we want to bring light into the
+              darkness of this world to help our fellow women live a life by
+              faith. For we walk by faith and not by sight.
+            </p>
+          </MotionP>
           <p className="text-lg text-gray-600 mb-6">
-            Being rooted in Christ our Lord we want to bring light into the
-            darkness of this world to help our fellow women live a life by
-            faith. For we walk by faith and not by sight.
-          </p>
-          <p className="text-lg text-gray-600">
+            <p className="font-serif">
             Our strength comes from the Lord, so in Him we trust and we hope our
             content will bless and richly empower you!
+            </p>
           </p>
+          
         </div>
       </section>
 
       {/* Gospel Section */}
-      <section id="gospel" className="py-24 bg-white">
+      <section id="gospel" className="py-24 bg-gradient-to-b from-purple-200 to-pink-100 font-serif">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            The Gospel of Jesus
-          </h2>
-          <div className="space-y-6 text-lg text-gray-600">
+          <MotionH1 className="text-3xl font-bold mb-12 text-center text-pink-800">The Gospel of Jesus</MotionH1>
+          <div className="space-y-6 text-lg text-gray-800">
             <p>
               • We acknowledge that we cannot do anything on our own and that
               any power to do good comes from God. Jesus died to reunite us to
@@ -283,21 +297,22 @@ export default function Home() {
             <p>
               • This is the foundation of our work and the source of any
               strength to do any advice you will find in this website. We hope
-              you begin from this foundation as you follow us.
+              you begin from this foundation as you follow us. 
             </p>
+            
           </div>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section ref={ref} className="py-24 bg-gradient-to-b from-white to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
+      <section id="categories" ref={ref} className="py-24 bg-gradient-to-b from-purple-200 to-pink-200 text-white/90 font-family-greatvibes text-sm font-bold">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-serif">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {categories.map((category, index) => (
               <Link href={category.link} key={category.title}>
                 <StyledCard>
@@ -313,9 +328,11 @@ export default function Home() {
                 </StyledCard>
               </Link>
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
+      </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
