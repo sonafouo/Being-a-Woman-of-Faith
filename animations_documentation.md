@@ -171,3 +171,13 @@ The project uses Framer Motion and React Intersection Observer to create various
     *   **`initial`, `animate`, `exit`:** These properties define the animation states for when the page enters, is visible, and exits, respectively.
     *   **`transition`:** Controls the animation duration and easing for a smooth effect.
 *   **Code Snippets:**
+
+
+*   **Name:** `Page Transitions`
+*   **Description:** This effect provides smooth transitions between pages when navigating using Next.js's built-in routing. It uses a fade-in and fade-out effect for a visually appealing experience.
+*   **Mechanism:**
+    *   **Next.js `Layout`:** The animation is applied within the `app/layout.tsx` file using Next.js's layout feature.
+    *   **`motion`:** The `motion` component wraps the `children` prop, which represents the content of the current page.
+    *   **`initial`, `animate`, `exit`:** These properties define the animation states for when the page enters, is visible, and exits, respectively.
+    *   **`transition`:** Controls the animation duration and easing for a smooth effect.
+*   **Code Snippets:**
