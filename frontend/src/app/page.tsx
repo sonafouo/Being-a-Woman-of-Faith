@@ -230,7 +230,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-7xl font-bold tracking-tight text-white"
             >
-              Being a Woman of Faith
+              Being a Woman of Faith - Empowering Lives
             </MotionH1>
             <MotionP
               initial={{ opacity: 0, y: 20 }}
@@ -248,24 +248,24 @@ export default function Home() {
       <section id="mission" className="py-20 bg-gradient-to-b from-pink-50 to-purple-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-8">Our Mission</h2>
-          <p className="text-lg text-gray-600 mb-6">
-            We are women young and old having one thing in common our faith in
-            God through the Lord Jesus, desiring to empower women with wisdom to
-            live a fulfilled life no matter what stage she may found herself.
-          </p>
           <MotionP className="text-lg text-gray-600 mb-6">
-            <p className="font-serif">
+              We are women young and old having one thing in common our faith in
+              God through the Lord Jesus, desiring to empower women with wisdom to
+              live a fulfilled life no matter what stage she may found herself.
+          </MotionP>
+          <MotionDiv className="text-lg text-gray-600 mb-6">
+            <span className="font-serif">
               Being rooted in Christ our Lord we want to bring light into the
               darkness of this world to help our fellow women live a life by
               faith. For we walk by faith and not by sight.
-            </p>
-          </MotionP>
-          <p className="text-lg text-gray-600 mb-6">
-            <p className="font-serif">
-            Our strength comes from the Lord, so in Him we trust and we hope our
-            content will bless and richly empower you!
-            </p>
-          </p>
+            </span>
+          </MotionDiv>
+          <MotionDiv className="text-lg text-gray-600 mb-6">
+            <span className="font-serif">
+              Our strength comes from the Lord, so in Him we trust and we hope our
+              content will bless and richly empower you!
+            </span>
+          </MotionDiv>
           
         </div>
       </section>
