@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { Sparkles } from "lucide-react";
 import { Heart, Book, Users } from "lucide-react";
 import Link from "next/link";
+import styled from 'styled-components';
 
 type MotionDivProps = HTMLMotionProps<"div"> & { className?: string };
 type MotionH1Props = HTMLMotionProps<"h1"> & { className?: string };
@@ -35,6 +36,69 @@ const categories = [
     link: "/married-women",
   },
 ];
+
+const StyledCard = styled.div`
+  .card {
+    width: 250px; /* Increased width */
+    height: 200px; /* Increased height */
+    padding: 1rem; /* Increased padding */
+    background: rgba(255, 182, 193, 0.34); /* Soft Pink */
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.440);
+    border-left: 2px rgba(255, 255, 255, 0.545) outset;
+    box-shadow: -40px 50px 30px rgba(0, 0, 0, 0.280);
+    transform: skewX(10deg);
+    transition: .4s;
+    overflow: hidden;
+    color: black; /* Ensure text color is black */
+    font-size: 1.2rem; /* Increase font size */
+  }
+
+  .card:hover {
+    height: 300px; /* Increased hover height */
+    transform: skew(0deg);
+  }
+
+  .align {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-self: flex-start;
+  }
+
+  .red {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff605c;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
+  }
+
+  .yellow {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffbd44;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
+  }
+
+  .green {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #00ca4e;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.280);
+  }
+
+  .card h1 {
+    text-align: center;
+    margin: 1.3rem;
+    color: black; /* Ensure text color is black */
+    text-shadow: -10px 5px 10px rgba(0, 0, 0, 0.573);
+  }
+`;
 
 export default function Home() {
   useEffect(() => {
@@ -236,29 +300,17 @@ export default function Home() {
           >
             {categories.map((category, index) => (
               <Link href={category.link} key={category.title}>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  style={{
-                    backgroundColor: 'white',
-                    borderRadius: '1rem',
-                    padding: '1.5rem',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                    transition: 'box-shadow 0.3s ease',
-                    cursor: 'pointer',
-                  }}
-                  whileHover={{
-                    boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)',
-                    backgroundColor: '#ffc0cb', // Pink color
-                  }}
-                >
-                  <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-blue-600">
-                    {category.icon}
+                <StyledCard>
+                  <div className="card">
+                    <div className="align">
+                      <span className="red" />
+                      <span className="yellow" />
+                      <span className="green" />
+                    </div>
+                    <h1>{category.title}</h1>
+                    <p>{category.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-                  <p className="text-gray-600">{category.description}</p>
-                </motion.div>
+                </StyledCard>
               </Link>
             ))}
           </motion.div>
