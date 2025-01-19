@@ -99,8 +99,8 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="focus:outline-none"
             >
               <Sparkles className="w-8 h-8 text-blue-600" />
@@ -240,7 +240,18 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                  style={{
+                    backgroundColor: 'white',
+                    borderRadius: '1rem',
+                    padding: '1.5rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'box-shadow 0.3s ease',
+                    cursor: 'pointer',
+                  }}
+                  whileHover={{
+                    boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)',
+                    backgroundColor: '#ffc0cb', // Pink color
+                  }}
                 >
                   <div className="bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center mb-4 text-blue-600">
                     {category.icon}
