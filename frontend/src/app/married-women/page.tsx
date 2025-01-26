@@ -1,10 +1,8 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Heart, Home, Book, Users, Crown, CircleDot, Star, Shield } from 'lucide-react';
+import { Heart, Home, Book, Users, Crown, CircleDot, Star, Shield } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -13,11 +11,8 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
+import NavBar from "@/components/ui/nav-bar";
+import HeroSection from "@/components/ui/hero-section";
 
 const MarriedWomenSpace: React.FC = () => {
   const sections = [
@@ -50,7 +45,8 @@ const MarriedWomenSpace: React.FC = () => {
       icon: <Book className="w-5 h-5 text-purple-500" />,
       content: [
         "Being a woman created in Christ to fulfill the good works which God has already planned for you entails you are not creating what you need to do. You are just entering the plan of God and obeying everything you find there.",
-        "In your life you are full of faith that whatever you have before you has been prepared by your Father, so he has your back. It creates assurance and internal peace. Situations do not shake you, you seem unbothered by the hardest situations not because you are strong but because He that is in you is bigger than he who is out there.",
+        "In your life you are full of faith that whatever you have before you has been prepared by your Father, so he has your back. It creates assurance and internal peace.",
+        "Situations do not shake you, you seem unbothered by the hardest situations not because you are strong but because He that is in you is bigger than he who is out there.",
         "Fear is not your portion, you walk by faith because to you all what your Father has told you through His Word, revelations are true and all other thoughts or words are lies."
       ]
     },
@@ -60,7 +56,7 @@ const MarriedWomenSpace: React.FC = () => {
       subtitle: "Understanding the Marriage Covenant",
       icon: <Heart className="w-5 h-5 text-red-500" />,
       content: [
-        "Your spouse is your closest relationship, he knows you more and you are more sensitive towards him. His appreciations or reproaches have more importance to you than anyone else's. You love and cherish him and have a lot of expectations from Him.",
+        "Your spouse is your closest relationship, he knows you more and you are more sensitive towards him. His appreciations or reproaches have more importance to you than anyone else's.",
         "This is just a narrative for most married women, some live different realities, some live at the verge of separation, some even regret to have accepted such a man as spouse.",
         "Here is the common denominator: you are tied to this man as long as he is alive and your union is not just recognized by men but it's a covenant before God which no man can set apart, not even you.",
         "The Bible teaches us the order in marriage in 1 Corinthians 11:3, Christ is the head of the man and man is the head of the woman. So your husband is your head, he leads the home and that's something you should accept wholeheartedly."
@@ -73,7 +69,8 @@ const MarriedWomenSpace: React.FC = () => {
       icon: <Shield className="w-5 h-5 text-blue-500" />,
       content: [
         "The Bible says he is to love you as Christ loves the church and you are to be submitted to him in everything (Ephesians 5:22-25).",
-        "Notice that this command is given to each spouse and was not conditional on the other. Submission is not in case the wife is loved though it will be done more easily in such a case. But submission is your duty as a wife independent of the obedience of your spouse to his own command to love you.",
+        "Notice that this command is given to each spouse and was not conditional on the other. Submission is not in case the wife is loved though it will be done more easily in such a case.",
+        "But submission is your duty as a wife independent of the obedience of your spouse to his own command to love you.",
         "You may be married to a husband who is not born again; remember you still have to be submitted to him. We will understand as we move why this foundation is important in our walk by faith."
       ]
     },
@@ -93,55 +90,21 @@ const MarriedWomenSpace: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-pink-50">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200 px-4 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
-            <ChevronLeft className="w-5 h-5" />
-            <span>Back to Home</span>
-          </Link>
-          <div className="flex items-center space-x-4">
-            <Users className="w-5 h-5 text-yellow-500" />
-            <span className="font-medium">Married Women Space</span>
-          </div>
-        </div>
-      </nav>
+      <NavBar title="Married Women Space" iconColor="yellow" />
 
       <main className="max-w-4xl mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex justify-center mb-8">
-              <Image
-                src="/images/woman-of-faith.jpg"
-                alt="Woman of Faith"
-                width={150}
-                height={150}
-                className="rounded-full shadow-lg"
-              />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'serif' }}>
-              Welcome, Dear Sister in Christ
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Let's discover how to build a Christ-centered marriage and home, walking in faith and purpose.
-            </p>
-          </motion.div>
-        </div>
+        <HeroSection
+          title="Welcome, Dear Sister in Christ"
+          description="Let's discover how to build a Christ-centered marriage and home, walking in faith and purpose."
+          imagePath="/images/woman-of-faith.jpg"
+        />
 
-        {/* Main Content */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Card className="mb-8 bg-white/50 backdrop-blur-sm">
+          <Card className="mb-8 modern-card">
             <CardContent className="p-6">
               <Accordion type="single" collapsible className="space-y-4">
                 {sections.map((section, index) => (
@@ -169,21 +132,20 @@ const MarriedWomenSpace: React.FC = () => {
           </Card>
         </motion.div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5, delay: 0.4 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ textAlign: 'center' }}
+        >
+          <Button
+            variant="default"
+            size="xl"
+            className="glow-button"
           >
-            <Button
-              className="bg-gradient-to-r from-yellow-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-yellow-600 hover:to-pink-600 transition-all duration-300"
-            >
-              Begin Your Journey
-            </Button>
-          </motion.div>
-        </div>
+            Begin Your Journey
+          </Button>
+        </motion.div>
       </main>
     </div>
   );

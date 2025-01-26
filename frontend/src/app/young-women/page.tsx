@@ -1,9 +1,8 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Heart, Star, Book, Users, Shield, Target } from 'lucide-react';
+import { Heart, Star, Book, Users, Shield, Target } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -12,11 +11,8 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
+import NavBar from "@/components/ui/nav-bar";
+import HeroSection from "@/components/ui/hero-section";
 
 const YoungWomanSpace: React.FC = () => {
   const sections = [
@@ -82,46 +78,21 @@ const YoungWomanSpace: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200 px-4 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
-            <ChevronLeft className="w-5 h-5" />
-            <span>Back to Home</span>
-          </Link>
-          <div className="flex items-center space-x-4">
-            <Users className="w-5 h-5 text-purple-500" />
-            <span className="font-medium">Young Woman Space</span>
-          </div>
-        </div>
-      </nav>
+      <NavBar title="Young Woman Space" iconColor="purple" />
 
       <main className="max-w-4xl mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'serif' }}>
-              Welcome, Dear Young Woman
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              This is a special season of preparation and growth. Let's discover God's purpose for your life together.
-            </p>
-          </motion.div>
-        </div>
+        <HeroSection
+          title="Welcome, Dear Young Woman"
+          description="This is a special season of preparation and growth. Let's discover God's purpose for your life together."
+          imagePath="/images/woman-of-faith.jpg"
+        />
 
-        {/* Main Content */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Card className="mb-8 bg-white/50 backdrop-blur-sm">
+          <Card className="mb-8 modern-card">
             <CardContent className="p-6">
               <Accordion type="single" collapsible className="space-y-4">
                 {sections.map((section, index) => (
@@ -149,21 +120,20 @@ const YoungWomanSpace: React.FC = () => {
           </Card>
         </motion.div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5, delay: 0.4 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ textAlign: 'center' }}
+        >
+          <Button
+            variant="default"
+            size="xl"
+            className="glow-button"
           >
-            <Button
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
-            >
-              Embrace Your Journey
-            </Button>
-          </motion.div>
-        </div>
+            Embrace Your Journey
+          </Button>
+        </motion.div>
       </main>
     </div>
   );

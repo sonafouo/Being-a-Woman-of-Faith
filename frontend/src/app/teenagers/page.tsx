@@ -1,9 +1,8 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Heart, Brain, Activity, Book, Users } from 'lucide-react';
+import { Heart, Brain, Activity, Book, Users, Star, Sparkles, BookOpen } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -12,14 +11,22 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
+import NavBar from "@/components/ui/nav-bar";
+import HeroSection from "@/components/ui/hero-section";
 
 const TeenagerSpace: React.FC = () => {
   const sections = [
+    {
+      id: "introduction",
+      title: "Introduction",
+      subtitle: "Your Special Time of Growth",
+      icon: <Star className="w-5 h-5 text-yellow-500" />,
+      content: [
+        "You are at a pivotal point in your life, standing between childhood and womanhood. The decisions you make now can have a significant impact on your future.",
+        "You are full of energy and, for many, still under parental care. Surrounded by friends, this is a time when a lot can happen.",
+        "This is a unique period in your life filled with opportunities and challenges. Let's explore how to navigate this time with wisdom and grace."
+      ]
+    },
     {
       id: "spirituality",
       title: "Your Spirituality",
@@ -27,23 +34,25 @@ const TeenagerSpace: React.FC = () => {
       icon: <Heart className="w-5 h-5 text-pink-500" />,
       content: [
         "This is the genesis of your identity. Without a spiritual foundation, you may face physical and mental challenges. You were created by a loving God who desires to make you His daughter. He has already paid the ultimate sacrifice for you.",
+        "Will you open your heart and accept the sacrifice of Jesus? Will you give Him full control over your will?",
         "If your identity is in Christ, you will not be swayed by seasonal or societal changes because you will know who you are. You will understand the greatness of your Heavenly Father and how precious you are to Him.",
         "The decision to follow Him and learn about Him through His Word (the Bible) and prayer is a significant step in your life, and it is beneficial to make this commitment while you are still a teenager."
       ]
     },
     {
-      id: "health",
-      title: "Health Care",
-      subtitle: "Understanding Your Physical Changes",
+      id: "physical-health",
+      title: "Physical Health",
+      subtitle: "Understanding Your Body's Changes",
       icon: <Activity className="w-5 h-5 text-green-500" />,
       content: [
-        "You are at a point where many changes are occurring in a phase called puberty. Here's what you need to know:",
-        "• First, don't panic! All changes are normal—you're not alone",
-        "• Growth spurts are normal and will stabilize by age 16",
-        "• Track your menstrual cycle with a calendar app",
-        "• Maintain a balanced diet with 2200 calories daily",
-        "• Focus on nutrients: calcium, iron, zinc, vitamin D",
-        "• Stay active and balance screen time with other activities"
+        "You are at a point where many changes are occurring in a phase called puberty. Your appearance becomes more feminine, and here's what you need to know:",
+        "• First, don't panic! All changes are normal—you're not alone, we all went through this",
+        "• You're growing taller than your male peers, and that's completely normal. This growth spurt will slow down by age 16",
+        "• Your breasts are starting to develop, so you might need a bra to feel more comfortable and presentable",
+        "• Your biological clock is starting with menstruation. Let your mom know when it happens and use a calendar app to track your cycle",
+        "• Your daily calorie requirement has increased to 2200 calories. Focus on essential nutrients like calcium, iron, zinc, and vitamin D",
+        "• Balance your diet with dairy and green veggies while limiting candies, fast food, and sodas",
+        "• Stay physically active and balance screen time with sports, reading, and household chores"
       ]
     },
     {
@@ -52,75 +61,62 @@ const TeenagerSpace: React.FC = () => {
       subtitle: "Nurturing Your Mind and Spirit",
       icon: <Brain className="w-5 h-5 text-purple-500" />,
       content: [
-        "Your mind is going through many transformations. Here's how to handle it:",
-        "• Talk to God about your feelings",
-        "• Open up to trusted parents",
-        "• Fill your mind with God's word",
-        "• Remember you're uniquely created",
-        "• Trust that all things work for your good",
-        "• Avoid harmful social media comparison"
+        "Your mind is going through many transformations as you experience numerous changes and challenges while your brain is still maturing.",
+        "If you feel anxious, have trouble sleeping, or feel sad, don't keep it to yourself — talk to God about your feelings and open up to a trusted parent.",
+        "Fill your mind with God's word, not the lies of the enemy.",
+        "In today's world of social media and peer pressure, comparison and low self-esteem can become significant problems. Remember, you were created uniquely by your heavenly father for a purpose in Christ.",
+        "Trust that all things work together for your good, and remember that God, your heavenly father, is aware of everything happening in your life."
       ]
     },
     {
-      id: "guidance",
-      title: "What Should You Do?",
-      subtitle: "Making the Most of Your Teen Years",
-      icon: <Book className="w-5 h-5 text-blue-500" />,
+      id: "practical-guidance",
+      title: "Practical Steps",
+      subtitle: "Making the Most of This Season",
+      icon: <Sparkles className="w-5 h-5 text-blue-500" />,
       content: [
-        "Make the most of this special time:",
-        "• Focus on education - your brain learns easily now",
-        "• Build a strong relationship with God",
-        "• Be close to your parents - they love you most",
-        "• Choose Christian friends with similar goals",
-        "• Discover and develop your talents",
-        "• Stay productive and avoid idleness"
+        "Focus on Your Education:",
+        "• Your brain is at a stage where learning comes easily",
+        "• Make the most of it and do your best in your studies",
+        "",
+        "Seek a Good Relationship with God:",
+        "• Use these relatively stress-free years to know God more",
+        "• Study His Word (the Bible) and pray regularly",
+        "• Desire to please Him in everything you do",
+        "",
+        "Be Close to Your Parents:",
+        "• No one on earth can love you more than your parents",
+        "• Confide in them about your emotional and physical struggles",
+        "• Don't rely on age mates as counselors—they're as inexperienced as you",
+        "",
+        "Choose the Right Friends:",
+        "• Surround yourself with Christian friends who share your goals",
+        "• Avoid friends who make you feel inferior",
+        "• Don't rush into things meant for the future",
+        "",
+        "Develop Your Talents:",
+        "• Explore activities like music, art, sports, or writing",
+        "• Keep yourself productively occupied after school"
       ]
     }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-purple-50">
-      {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200 px-4 py-3">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
-            <ChevronLeft className="w-5 h-5" />
-            <span>Back to Home</span>
-          </Link>
-          <div className="flex items-center space-x-4">
-            <Users className="w-5 h-5 text-pink-500" />
-            <span className="font-medium">Teenager Space</span>
-          </div>
-        </div>
-      </nav>
+      <NavBar title="Teenager Space" iconColor="pink" />
 
       <main className="max-w-4xl mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'serif' }}>
-              Welcome, Dear Teenager
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              You are at a pivotal point in your life, standing between childhood and womanhood. 
-              This is a special time filled with opportunities for growth and discovery.
-            </p>
-          </motion.div>
-        </div>
+        <HeroSection
+          title="Welcome, Dear Teenager"
+          description="You are at a pivotal point in your life, standing between childhood and womanhood. This is a special time filled with opportunities for growth and discovery."
+          imagePath="/images/woman-of-faith.jpg"
+        />
 
-        {/* Main Content */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeIn}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Card className="mb-8 bg-white/50 backdrop-blur-sm">
+          <Card className="mb-8 modern-card">
             <CardContent className="p-6">
               <Accordion type="single" collapsible className="space-y-4">
                 {sections.map((section, index) => (
@@ -148,21 +144,20 @@ const TeenagerSpace: React.FC = () => {
           </Card>
         </motion.div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.5, delay: 0.4 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ textAlign: 'center' }}
+        >
+          <Button
+            variant="default"
+            size="xl"
+            className="glow-button"
           >
-            <Button
-              className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-4 rounded-full hover:from-pink-600 hover:to-purple-600 transition-all duration-300"
-            >
-              Start Your Journey
-            </Button>
-          </motion.div>
-        </div>
+            Start Your Journey
+          </Button>
+        </motion.div>
       </main>
     </div>
   );
