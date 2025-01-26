@@ -1,49 +1,162 @@
-import React from 'react';
+"use client";
 
-const YoungWomanSpace = () => {
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ChevronLeft, Heart, Star, Book, Users, Shield, Target } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const YoungWomanSpace: React.FC = () => {
+  const sections = [
+    {
+      id: "identity",
+      title: "Your Identity in Christ",
+      icon: <Heart className="w-5 h-5 text-pink-500" />,
+      content: [
+        "You aren't yet married and are preparing yourself for that stage of life while honing other areas. You may still be under parental care or, for many, already independent.",
+        "This moment is crucial as it prepares you for marital life, independence, motherhood, and increased responsibility.",
+        "Your identity is not defined by marriage or career but by being a daughter of the Most High God. Keep this in mind as we move forward."
+      ]
+    },
+    {
+      id: "journey",
+      title: "Your Journey",
+      icon: <Target className="w-5 h-5 text-blue-500" />,
+      content: [
+        "You may be completing your studies or already starting a career, and these may occupy most of your days. However, it doesn't end there.",
+        "Remember that there is no lateness in any of these areas —education, marriage, or motherhood. As long as you are making the most of the opportunities presented to you, just keep moving forward with confidence.",
+        "Our society has diverse views on these matters, but in this forum, we aim to uphold a more godly standard."
+      ]
+    },
+    {
+      id: "rebecca",
+      title: "Learning from Rebecca",
+      icon: <Star className="w-5 h-5 text-yellow-500" />,
+      content: [
+        "Rebecca (Genesis 24) was a young lady like you, living under parental care. Her behavior and good heart stand out in her story.",
+        "She wasn't fetching water to be noticed; it was simply a household chore she was doing. She decided to fetch water for all the camels and even proposed them to come over to their house.",
+        "In the process of obeying her parents (doing the will of God), she applied what she had learned from her parents and from God, and she obtained a husband—the only son of Abraham, the father of faith.",
+        "You are not late in the eyes of God; He is preparing you for what He has in store for you. You need preparation for any task, so don't go through it with bitterness, but with joy through faith."
+      ]
+    },
+    {
+      id: "dina",
+      title: "Learning from Dina",
+      icon: <Book className="w-5 h-5 text-purple-500" />,
+      content: [
+        "Dina's story (Genesis 34) teaches us about the dangers of distraction and idleness.",
+        "Unlike Rebecca who was diligent in her duties, Dina left her house aimlessly to see the city girls.",
+        "The lesson here is clear: stay busy doing what God has given you to do. By doing so, you are learning and equipping yourself with the tools needed for your future duties.",
+        "The devil uses idleness and distraction to lead young ladies astray. He does not come just to steal, but also to kill and destroy—don't give him access to any part of your life."
+      ]
+    },
+    {
+      id: "purity",
+      title: "Sexual Purity",
+      icon: <Shield className="w-5 h-5 text-green-500" />,
+      content: [
+        "Sexual purity goes beyond physical abstinence—it encompasses your thoughts and activities.",
+        "If you are a Christian, you understand that our mind is a major gateway for sin. Sexual purity requires abstaining from any activity or thought which is sexually impure.",
+        "Even if you came to know the Lord after losing your virginity or experiencing trauma, you can still become sexually pure. You are a new creature in Christ Jesus (1 Corinthians 5:12).",
+        "We are required to offer ourselves as a living sacrifice unto God (Romans 12:1). God wants your body, soul, and mind to belong to Him wholly."
+      ]
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50 text-gray-800 p-8">
-      <h1 className="text-4xl font-bold mb-6">Young Woman Space</h1>
-      <p className="text-lg mb-4">
-        Welcome to the Young Woman Space! Here you can discover God's purpose for your single season and grow in your faith.
-      </p>
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold mb-4">Resources for Young Women</h2>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Bible study guides for young adults</li>
-          <li>Career and education guidance from a faith perspective</li>
-          <li>Devotionals for personal growth</li>
-          <li>Advice on relationships and dating as a Christian</li>
-        </ul>
-      </div>
-      <div className="bg-white rounded-lg shadow-md p-6 mt-6">
-        <h2 className="text-2xl font-semibold mb-4">Being a Young Woman of Faith</h2>
-        <div className="space-y-4">
-          <p>Young woman (lady) • Introduction • You aren't yet married and are preparing yourself for that stage of life while honing other areas. You may still be under parental care or, for many, already independent. This moment is crucial as it prepares you for marital life, independence, motherhood, and increased responsibility.</p>
-          <p>Our society has diverse views on these matters, but in this forum, we aim to uphold a more godly standard.</p>
-          <h3 className="text-xl font-semibold mt-4">Young woman (what awaits you?)</h3>
-          <p>You may be completing your studies or already starting a career, and these may occupy most of your days. However, it doesn't end there. Depending on your country of origin, marriage may be an unavoidable topic.</p>
-          <p>Before going any further, remember that there is no lateness in any of these areas —education, marriage, or motherhood. As long as you are making the most of the opportunities presented to you, just keep moving forward with confidence.</p>
-          <p>Your identity is not defined by marriage or career but by being a daughter of the Most High God. Keep this in mind as we move forward.</p>
-          <h3 className="text-xl font-semibold mt-4">Young lady (A case study)</h3>
-          <p>This is a Christian forum, so most of our case studies will be from the Bible. It is full of wisdom and not just personal experiences, ensuring that our advice can be truly impactful for you.</p>
-          <p>Have you ever heard the story of Rebecca (Genesis 24)? She was a young lady like you, living under parental care. What I want you to notice is her behavior and good heart. She wasn't fetching water to be noticed; it was simply a household chore she was doing. She decided to fetch water for all the camels and even proposed them to come over to their house.</p>
-          <p>In the process of obeying her parents (doing the will of God), she applied what she had learned from her parents and from God, and she obtained a husband. And not just any husband—the only son of Abraham, the father of faith. Rebecca is remembered throughout history today.</p>
-          <p>What would have happened if she had filled her heart with bitterness, sadness, or distraction?</p>
-          <p>You are not late in the eyes of God; He is preparing you for what He has in store for you. You need preparation for any task, so don't go through it with bitterness, but with joy through faith. The blessing of Rebecca will surely be yours.</p>
-          <p>Remember to Trust God, He gave His only Son to save you, don't doubt on trivial needs of this world, your God is far greater than that. His timing is not your timing.</p>
-          <h3 className="text-xl font-semibold mt-4">Another case study</h3>
-          <p>Let's consider another example, this time focusing on Dina, a daughter of Jacob, from Genesis 34. Dina was a young girl from a good family. There's something important to note from her story. Dina left her house to see the other girls in the city. While strolling through the streets, she was seen by the prince of the country. She was taken advantage of and later asked in marriage.</p>
-          <p>Do you notice the difference between Dina and Rebecca? One significant distinction is distraction and idleness—two powerful tools the devil uses to lead young ladies astray. Rebecca was not idle; she was always busy helping her mother and happily running errands when asked. Dina, on the other hand, was likely idle at home and decided to go out just to see the city girls. How long could that take? Where exactly was she going? What would she see or do there?</p>
-          <p>Because of her idleness and distraction she brought her whole family to be guilty of murder. The devil does not come to you just to steal. He also kills and destroys don't give him access in any part of your life.</p>
-          <p>If there's one lesson to learn from these stories, it is to stay busy doing what God has given you to do. By doing so, you are learning and equipping yourself with the tools needed to successfully accomplish your future duties.</p>
-          <h3 className="text-xl font-semibold mt-4">Young lady (Sexual Purity)</h3>
-          <p>I guess when you hear of sexual purity you think of remaining virgin or abstaining from sexual intercourse with a man. While that is very true and an important part of sexual purity, it's not all. If you are a Christian you may know that our mind is a major way through which we can sin. Sexual purity requires abstaining from any activity or thought which is sexually impure.</p>
-          <p>You may have known the Lord while not being a virgin anymore or after a rape. You can still become sexually pure. You are a new creature in Christ Jesus (1 Corinthians 5:12)</p>
-          <p>The images you watch, what you do to your body while alone, what you do over a call with a boy or man all affects your purity.</p>
-          <p>We are required to offer ourselves as a living sacrifice unto God (Romans 12:1). God wants your body, soul and mind to belong to Him wholly.</p>
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-pink-50">
+      {/* Navigation Bar */}
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200 px-4 py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+            <ChevronLeft className="w-5 h-5" />
+            <span>Back to Home</span>
+          </Link>
+          <div className="flex items-center space-x-4">
+            <Users className="w-5 h-5 text-purple-500" />
+            <span className="font-medium">Young Woman Space</span>
+          </div>
         </div>
-      </div>
+      </nav>
+
+      <main className="max-w-4xl mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'serif' }}>
+              Welcome, Dear Young Woman
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              This is a special season of preparation and growth. Let's discover God's purpose for your life together.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Main Content */}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Card className="mb-8 bg-white/50 backdrop-blur-sm">
+            <CardContent className="p-6">
+              <Accordion type="single" collapsible className="space-y-4">
+                {sections.map((section, index) => (
+                  <AccordionItem key={section.id} value={section.id}>
+                    <AccordionTrigger className="text-lg font-medium">
+                      <div className="flex items-center space-x-2">
+                        {section.icon}
+                        <span>{section.title}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 space-y-4 pt-4">
+                      {section.content.map((paragraph, i) => (
+                        <p key={i} className="leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Button
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+            >
+              Embrace Your Journey
+            </Button>
+          </motion.div>
+        </div>
+      </main>
     </div>
   );
 };
