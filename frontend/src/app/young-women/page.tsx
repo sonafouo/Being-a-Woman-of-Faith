@@ -23,6 +23,7 @@ const YoungWomanSpace: React.FC = () => {
     {
       id: "identity",
       title: "Your Identity in Christ",
+      subtitle: "Understanding Your True Worth",
       icon: <Heart className="w-5 h-5 text-pink-500" />,
       content: [
         "You aren't yet married and are preparing yourself for that stage of life while honing other areas. You may still be under parental care or, for many, already independent.",
@@ -33,6 +34,7 @@ const YoungWomanSpace: React.FC = () => {
     {
       id: "journey",
       title: "Your Journey",
+      subtitle: "Walking in God's Timing",
       icon: <Target className="w-5 h-5 text-blue-500" />,
       content: [
         "You may be completing your studies or already starting a career, and these may occupy most of your days. However, it doesn't end there.",
@@ -43,6 +45,7 @@ const YoungWomanSpace: React.FC = () => {
     {
       id: "rebecca",
       title: "Learning from Rebecca",
+      subtitle: "A Story of Faith and Obedience",
       icon: <Star className="w-5 h-5 text-yellow-500" />,
       content: [
         "Rebecca (Genesis 24) was a young lady like you, living under parental care. Her behavior and good heart stand out in her story.",
@@ -54,6 +57,7 @@ const YoungWomanSpace: React.FC = () => {
     {
       id: "dina",
       title: "Learning from Dina",
+      subtitle: "Understanding the Dangers of Idleness",
       icon: <Book className="w-5 h-5 text-purple-500" />,
       content: [
         "Dina's story (Genesis 34) teaches us about the dangers of distraction and idleness.",
@@ -65,6 +69,7 @@ const YoungWomanSpace: React.FC = () => {
     {
       id: "purity",
       title: "Sexual Purity",
+      subtitle: "Guarding Your Heart and Body",
       icon: <Shield className="w-5 h-5 text-green-500" />,
       content: [
         "Sexual purity goes beyond physical abstinence—it encompasses your thoughts and activities.",
@@ -122,9 +127,12 @@ const YoungWomanSpace: React.FC = () => {
                 {sections.map((section, index) => (
                   <AccordionItem key={section.id} value={section.id}>
                     <AccordionTrigger className="text-lg font-medium">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-4">
                         {section.icon}
-                        <span>{section.title}</span>
+                        <div className="text-left">
+                          <div className="font-semibold">{section.title}</div>
+                          <div className="text-sm text-gray-500">{section.subtitle}</div>
+                        </div>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 space-y-4 pt-4">

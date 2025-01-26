@@ -24,6 +24,7 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "introduction",
       title: "Introduction",
+      subtitle: "Your Journey as a Married Woman",
       icon: <Star className="w-5 h-5 text-yellow-500" />,
       content: [
         "You are married, maybe to a Christian partner or maybe not. You have kids or are planning to have. You are a spouse, mother, daughter in law, sister inlaw etc. That's a lot to manage if you have to do it with your own understanding.",
@@ -34,6 +35,7 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "identity",
       title: "Who Are You?",
+      subtitle: "Understanding Your True Identity",
       icon: <Crown className="w-5 h-5 text-pink-500" />,
       content: [
         "It's true we spoke about being a spouse, a mother, daughter inlaw etc but that's not your identity, those are your roles.",
@@ -44,6 +46,7 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "meaning",
       title: "What Does It Mean?",
+      subtitle: "Living in God's Purpose",
       icon: <Book className="w-5 h-5 text-purple-500" />,
       content: [
         "Being a woman created in Christ to fulfill the good works which God has already planned for you entails you are not creating what you need to do. You are just entering the plan of God and obeying everything you find there.",
@@ -54,6 +57,7 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "marriage",
       title: "Living with Your Spouse",
+      subtitle: "Understanding the Marriage Covenant",
       icon: <Heart className="w-5 h-5 text-red-500" />,
       content: [
         "Your spouse is your closest relationship, he knows you more and you are more sensitive towards him. His appreciations or reproaches have more importance to you than anyone else's. You love and cherish him and have a lot of expectations from Him.",
@@ -65,6 +69,7 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "submission",
       title: "Biblical Submission",
+      subtitle: "Walking in God's Order",
       icon: <Shield className="w-5 h-5 text-blue-500" />,
       content: [
         "The Bible says he is to love you as Christ loves the church and you are to be submitted to him in everything (Ephesians 5:22-25).",
@@ -75,6 +80,7 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "faith-walk",
       title: "Living with Your Spouse by Faith",
+      subtitle: "Learning from Biblical Examples",
       icon: <CircleDot className="w-5 h-5 text-green-500" />,
       content: [
         "You have placed the foundation on which your home is built. Now what next?",
@@ -141,9 +147,12 @@ const MarriedWomenSpace: React.FC = () => {
                 {sections.map((section, index) => (
                   <AccordionItem key={section.id} value={section.id}>
                     <AccordionTrigger className="text-lg font-medium">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-4">
                         {section.icon}
-                        <span>{section.title}</span>
+                        <div className="text-left">
+                          <div className="font-semibold">{section.title}</div>
+                          <div className="text-sm text-gray-500">{section.subtitle}</div>
+                        </div>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 space-y-4 pt-4">

@@ -23,6 +23,7 @@ const TeenagerSpace: React.FC = () => {
     {
       id: "spirituality",
       title: "Your Spirituality",
+      subtitle: "Finding Your Identity in Christ",
       icon: <Heart className="w-5 h-5 text-pink-500" />,
       content: [
         "This is the genesis of your identity. Without a spiritual foundation, you may face physical and mental challenges. You were created by a loving God who desires to make you His daughter. He has already paid the ultimate sacrifice for you.",
@@ -33,6 +34,7 @@ const TeenagerSpace: React.FC = () => {
     {
       id: "health",
       title: "Health Care",
+      subtitle: "Understanding Your Physical Changes",
       icon: <Activity className="w-5 h-5 text-green-500" />,
       content: [
         "You are at a point where many changes are occurring in a phase called puberty. Here's what you need to know:",
@@ -47,6 +49,7 @@ const TeenagerSpace: React.FC = () => {
     {
       id: "mental-health",
       title: "Mental Health",
+      subtitle: "Nurturing Your Mind and Spirit",
       icon: <Brain className="w-5 h-5 text-purple-500" />,
       content: [
         "Your mind is going through many transformations. Here's how to handle it:",
@@ -61,6 +64,7 @@ const TeenagerSpace: React.FC = () => {
     {
       id: "guidance",
       title: "What Should You Do?",
+      subtitle: "Making the Most of Your Teen Years",
       icon: <Book className="w-5 h-5 text-blue-500" />,
       content: [
         "Make the most of this special time:",
@@ -122,9 +126,12 @@ const TeenagerSpace: React.FC = () => {
                 {sections.map((section, index) => (
                   <AccordionItem key={section.id} value={section.id}>
                     <AccordionTrigger className="text-lg font-medium">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-4">
                         {section.icon}
-                        <span>{section.title}</span>
+                        <div className="text-left">
+                          <div className="font-semibold">{section.title}</div>
+                          <div className="text-sm text-gray-500">{section.subtitle}</div>
+                        </div>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 space-y-4 pt-4">
