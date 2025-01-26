@@ -3,10 +3,13 @@
 import { motion, useScroll, useTransform, HTMLMotionProps, MotionProps } from "framer-motion";
 import { useRef, useEffect, useState, ReactNode } from "react";
 import { useInView } from "react-intersection-observer";
-import { Sparkles, Heart, Book, Users } from "lucide-react";
+import { Sparkles, Heart, Book, Users, Globe, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import styled from 'styled-components';
-// import localFont from "next/font/local";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
 type MotionDivProps = HTMLMotionProps<"div"> & { className?: string };
 type MotionH1Props = HTMLMotionProps<"h1"> & { className?: string };
 type MotionPProps = HTMLMotionProps<"p"> & { className?: string, children?: ReactNode};
@@ -14,13 +17,6 @@ type MotionPProps = HTMLMotionProps<"p"> & { className?: string, children?: Reac
 const MotionDiv: React.FC<MotionDivProps> = motion.div;
 const MotionH1: React.FC<MotionH1Props> = motion.h1;
 const MotionP: React.FC<MotionPProps> = motion.p;
-
-// const myFont = localFont({
-//   src: "../public/fonts/greatvibes-regular.otf",
-//   display: "swap",
-// });
-
-
 
 const categories = [
   {
@@ -108,6 +104,8 @@ const StyledCard = styled.div`
 `;
 
 export default function Home() {
+  const [language, setLanguage] = useState('en');
+
   useEffect(() => {
     // Disable automatic scroll restoration
     if ('scrollRestoration' in history) {
@@ -160,14 +158,6 @@ export default function Home() {
   return (
     <>
       <main className="bg-gradient-to-b from-blue-50 to-green-50 text-gray-800">
-      {/* API Message Section */}
-      {/* <section className="py-8 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4">API Message</h2>
-          <p className="text-lg text-gray-600">{apiMessage || "Loading..."}</p>
-        </div>
-      </section> */}
-      {/* Sticky Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
@@ -199,20 +189,30 @@ export default function Home() {
               >
                 Who am I ? 
               </a>
-
-
             </div>
-            <a
-              href="#join-us"
-              className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors"
-            >
-              Join Us
-            </a>
+            <div className="flex items-center space-x-4">
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="w-[140px]">
+                  <Globe className="w-4 h-4 mr-2" />
+                  <SelectValue placeholder="Language" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="fr">Français</SelectItem>
+                </SelectContent>
+              </Select>
+              <Button
+                onClick={() => alert('Login functionality coming soon!')}
+                className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
+                <Users className="w-4 h-4 mr-2" />
+                Join Us
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}  
       <section
         ref={containerRef}
         className="min-h-screen relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -245,7 +245,6 @@ export default function Home() {
         </MotionDiv>
       </section>
 
-      {/* Mission Section */}
       <section id="mission" className="py-20 bg-gradient-to-b from-pink-50 to-purple-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-8" style={{ fontFamily: 'Great Vibes' }}>Our Mission</h2>
@@ -267,11 +266,9 @@ export default function Home() {
               content will bless and richly empower you!
             </span>
           </MotionDiv>
-          
         </div>
       </section>
 
-      {/* Gospel Section */}
       <section id="gospel" className="py-24 bg-gradient-to-b from-purple-200 to-pink-100 font-serif">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <MotionH1 className="text-3xl font-bold mb-12 text-center text-pink-800" style={{ fontFamily: 'Great Vibes' }}>The Gospel of Jesus</MotionH1>
@@ -304,33 +301,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Section */}
       <section id="categories" ref={ref} className="py-24 bg-gradient-to-b from-purple-200 to-pink-200 text-white/90 font-family-greatvibes text-sm font-bold">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-serif">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {categories.map((category, index) => (
-              <Link href={category.link} key={category.title}>
-                <StyledCard>
-                  <div className="card">
-                    <div className="align">
-                      <span className="red" />
-                      <span className="yellow" />
-                      <span className="green" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-serif">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {categories.map((category, index) => (
+                <Link href={category.link} key={category.title}>
+                  <StyledCard>
+                    <div className="card">
+                      <div className="align">
+                        <span className="red" />
+                        <span className="yellow" />
+                        <span className="green" />
+                      </div>
+                      <h1>{category.title}</h1>
+                      <p>{category.description}</p>
                     </div>
-                    <h1>{category.title}</h1>
-                    <p>{category.description}</p>
-                  </div>
-                </StyledCard>
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+                  </StyledCard>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-24 bg-gradient-to-b from-pink-200 to-purple-100">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Card className="p-8">
+            <div className="flex flex-col items-center space-y-6">
+              <MessageCircle className="w-12 h-12 text-purple-500" />
+              <h2 className="text-3xl font-bold" style={{ fontFamily: 'Great Vibes' }}>Have any questions?</h2>
+              <p className="text-lg text-gray-600 max-w-2xl">
+                Feel free to write to us - we'll be delighted to answer you as the Lord leads us.
+              </p>
+              <Button
+                onClick={() => alert('Contact form coming soon!')}
+                variant="outline"
+                className="text-lg"
+              >
+                Contact Us
+              </Button>
+            </div>
+          </Card>
+        </div>
       </section>
       </main>
     </>
