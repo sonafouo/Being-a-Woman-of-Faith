@@ -77,13 +77,26 @@ const MarriedWomenSpace: React.FC = () => {
     {
       id: "faith-walk",
       title: "Living with Your Spouse by Faith",
-      subtitle: "Learning from Biblical Examples",
+      subtitle: "Walking in God's Program",
       icon: <CircleDot className="w-5 h-5 text-green-500" />,
       content: [
-        "You have placed the foundation on which your home is built. Now what next?",
-        "Remember your marriage, or your duty as a spouse is all in the program of God when you are born in Christ.",
-        "Let's look at a woman in the Bible who walked according to her calculations and emotions: Sara.",
-        "Through her story, we learn the importance of trusting God's plan rather than relying on our own understanding."
+        "You have placed the foundation on which your home is built. Now what next? Remember your marriage, or your duty as a spouse is all in the program of God when you are born in Christ.",
+        "You know God has good plans for you, plans to make you prosper, so it doesn't matter the look of things in a situation, it will turn out for your good. When we walk by faith, we walk by obedience to his word because we depend on Him entirely. When we walk in obedience our hearts do not condemn us so we can continue to trust in His word.",
+        "So even if a misunderstanding arrives with your husband all you have to do is to obey God's word for you at the point: Is it to stay calm, is it to ask for forgiveness, is it to forgive? Just do it and he will accomplish his word for the rest and peace will be back to your home.",
+        "Is there an issue with your spouse you find it difficult to bring up the topic, go to his head (God) and ask him to give you wisdom or ask Him to bring the heart of your spouse back to Him in case he is sliding away.",
+        "You are not alone in your marriage, your father is with you. So walk by faith with Him through this."
+      ]
+    },
+    {
+      id: "emotions",
+      title: "The Danger of Walking with Emotions",
+      subtitle: "Choosing Faith Over Feelings",
+      icon: <Users className="w-5 h-5 text-orange-500" />,
+      content: [
+        "We've spoken about walking by faith with your spouse, but let's look at the other way around which is walking by emotions. Emotions is a big part of our couple life, it comprises the romance and everything related. But that should not be the source of our driving force.",
+        "If we are led by our emotions it becomes a great danger and can be an open door to your common enemy. Our emotions can't enable us to know the perfect will of God and leads us to walk in the flesh.",
+        "That's why in every situation no matter how chaotic it has been we need to stop and get out of the emotion felt to ask God His will. If you are in a hot argument with your spouse, if you're acting by the flesh you will speak your mind as they say, and end up destroying the trust and peace in your couple. Emotions can lead us astray.",
+        "Let's speak about a woman in the bible who because she was lead by her emotions let her husband to go against the will of God and till today the consequence still troubles the world."
       ]
     }
   ];
