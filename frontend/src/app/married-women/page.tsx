@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import NavBar from "@/components/ui/nav-bar";
 import HeroSection from "@/components/ui/hero-section";
+import { QuestionsSection } from "@/components/ui/questions-section";
 
 const MarriedWomenSpace: React.FC = () => {
   const sections = [
@@ -145,6 +146,7 @@ const MarriedWomenSpace: React.FC = () => {
           </Card>
         </motion.div>
 
+        <QuestionsSection />
       </main>
     </div>
   );
