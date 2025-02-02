@@ -29,8 +29,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imagePath
                 <Image
                   src={imagePath}
                   alt="Hero Image"
-                  fill
-                  style={{ objectFit: 'cover' }}
+                  width={150}
+                  height={150}
+                  priority
+                  unoptimized
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                   className="rounded-full"
                 />
                 {/* Glow effect */}

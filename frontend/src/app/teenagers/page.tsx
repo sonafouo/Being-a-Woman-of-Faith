@@ -109,7 +109,7 @@ const TeenagerSpace: React.FC = () => {
         <HeroSection
           title="Welcome, Dear Teenager"
           description="You are at a pivotal point in your life, standing between childhood and womanhood. This is a special time filled with opportunities for growth and discovery."
-          imagePath="/images/woman-of-faith.jpg"
+          imagePath="/images/teenager-profile.JPG"
         />
 
         <motion.div
