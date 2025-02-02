@@ -1,16 +1,26 @@
-"use client";
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useTranslation } from '@/hooks/use-translation';
 
 interface HeroSectionProps {
-  title: string;
-  description: string;
-  imagePath: string;
+  pageKey?: 'teenagers' | 'home';
 }
 
-const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imagePath }) => {
+export default function HeroSection({ pageKey = 'home' }: HeroSectionProps) {
+  const { t } = useTranslation();
+  
+  const content = pageKey === 'teenagers' ? {
+    title: t('teenagers.welcome.title'),
+    description: t('teenagers.welcome.description'),
+    imagePath: '/images/teenager-profile.JPG'
+  } : {
+    title: t('hero.title'),
+    description: t('hero.subtitle'),
+    imagePath: '/images/woman-of-faith.jpg'
+  };
   return (
     <div className="text-center mb-12 relative overflow-hidden">
       <div style={{ position: 'relative', zIndex: 10 }}>
@@ -27,7 +37,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imagePath
             >
               <div className="relative w-[150px] h-[150px] rounded-full overflow-hidden shadow-lg">
                 <Image
-                  src={imagePath}
+                  src={content.imagePath}
                   alt="Hero Image"
                   width={150}
                   height={150}
@@ -90,7 +100,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imagePath
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <h1 className="text-4xl md:text-5xl font-bold gradient-text mb-4 font-serif">
-                {title}
+                {content.title}
               </h1>
             </motion.div>
 
@@ -101,7 +111,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imagePath
               style={{ position: 'relative' }}
             >
               <p className="text-lg text-gray-600 max-w-2xl mx-auto content-paragraph">
-                {description}
+                {content.description}
               </p>
               {/* Decorative underline */}
               <motion.div
@@ -171,6 +181,4 @@ const HeroSection: React.FC<HeroSectionProps> = ({ title, description, imagePath
       ))}
     </div>
   );
-};
-
-export default HeroSection;
+}
