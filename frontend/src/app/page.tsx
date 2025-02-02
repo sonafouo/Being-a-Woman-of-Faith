@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
 import {Card} from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
+import ContactForm from '@/components/ui/contact-form';
+import {useRouter} from 'next/navigation';
 
 type MotionDivProps = HTMLMotionProps<'div'> & {className?: string};
 type MotionH1Props = HTMLMotionProps<'h1'> & {className?: string};
@@ -107,7 +109,9 @@ const StyledCard = styled.div`
 `;
 
 export default function Home() {
+	const router = useRouter();
 	const [language, setLanguage] = useState('en');
+	const [showContactForm, setShowContactForm] = useState(false);
 
 	useEffect(() => {
 		// Disable automatic scroll restoration
@@ -208,7 +212,7 @@ export default function Home() {
 									</SelectContent>
 								</Select>
 								<Button
-									onClick={() => alert('Login functionality coming soon!')}
+									onClick={() => router.push('/auth/signup')}
 									className='bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors'>
 									<Users className='w-4 h-4 mr-2' />
 									Join Us
@@ -329,9 +333,10 @@ export default function Home() {
 									Have any questions?
 								</h2>
 								<p className='text-lg text-gray-600 max-w-2xl'>Feel free to write to us - we'll be delighted to answer you as the Lord leads us.</p>
-								<Button onClick={() => alert('Contact form coming soon!')} variant='outline' className='text-lg'>
+								<Button onClick={() => setShowContactForm(true)} variant='outline' className='text-lg'>
 									Contact Us
 								</Button>
+								{showContactForm && <ContactForm onClose={() => setShowContactForm(false)} />}
 							</div>
 						</Card>
 					</div>
