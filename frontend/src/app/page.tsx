@@ -24,18 +24,21 @@ const categories = [
     title: "Teenager",
     description: "Navigate your faith journey during these transformative years",
     link: "/teenagers",
+    image: "/images/categories/teenager.jpg"
   },
   {
     icon: <Book className="w-6 h-6" />,
     title: "Young Woman",
     description: "Discover God's purpose for your single season",
     link: "/young-women",
+    image: "/images/categories/young-woman.jpg"
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Married Women",
     description: "Build a Christ-centered marriage and home",
     link: "/married-women",
+    image: "/images/categories/married-woman.jpg"
   },
 ];
 
