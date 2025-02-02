@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from '@/hooks/use-translation';
 
 interface HeroSectionProps {
-  pageKey?: 'teenagers' | 'home';
+  pageKey?: 'teenagers' | 'home' | 'youngWoman' | 'marriedWoman';
 }
 
 export default function HeroSection({ pageKey = 'home' }: HeroSectionProps) {
@@ -16,6 +16,14 @@ export default function HeroSection({ pageKey = 'home' }: HeroSectionProps) {
     title: t('teenagers.welcome.title'),
     description: t('teenagers.welcome.description'),
     imagePath: '/images/teenager-profile.JPG'
+  } : pageKey === 'youngWoman' ? {
+    title: t('categories.youngWoman.welcome.title'),
+    description: t('categories.youngWoman.welcome.description'),
+    imagePath: '/images/young-woman-profile.JPG'
+  } : pageKey === 'marriedWoman' ? {
+    title: t('categories.marriedWoman.welcome.title'),
+    description: t('categories.marriedWoman.welcome.description'),
+    imagePath: '/images/married-women-profile.JPG'
   } : {
     title: t('hero.title'),
     description: t('hero.subtitle'),
