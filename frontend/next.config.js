@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  compiler: {
+    styledComponents: true,
   },
   images: {
     unoptimized: true,
-    domains: ['localhost']
-  }
-};
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
