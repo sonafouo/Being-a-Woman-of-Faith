@@ -2,6 +2,7 @@
   base = "frontend"
   command = "npm run build"
   publish = ".next"
+  prebuild = "mkdir -p frontend/.next/standalone/.next/cache"
 
 [build.environment]
   NEXT_PUBLIC_API_URL = "https://api.beingawomanoffaith.com"
