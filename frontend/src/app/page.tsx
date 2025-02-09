@@ -338,17 +338,19 @@ export default function Home() {
             >
               {categories.map((category) => (
                 <Link href={category.link} key={category.title}>
-                  <StyledCard>
-                    <div className='card'>
-                      <div className='align'>
-                        <span className='red' />
-                        <span className='yellow' />
-                        <span className='green' />
+                  <a>
+                    <StyledCard>
+                      <div className='card'>
+                        <div className='align'>
+                          <span className='red' />
+                          <span className='yellow' />
+                          <span className='green' />
+                        </div>
+                        <h1>{category.title}</h1>
+                        <p>{category.description}</p>
                       </div>
-                      <h1>{category.title}</h1>
-                      <p>{category.description}</p>
-                    </div>
-                  </StyledCard>
+                    </StyledCard>
+                  </a>
                 </Link>
               ))}
             </motion.div>
