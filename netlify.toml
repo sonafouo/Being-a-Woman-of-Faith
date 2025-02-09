@@ -1,4 +1,4 @@
-t[build]
+[build]
   base = "frontend"
   command = "npm run build"
   publish = ".next"
