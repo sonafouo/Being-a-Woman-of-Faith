@@ -320,8 +320,8 @@ export default function Home() {
 							transition={{duration: 0.8}}
 							className='grid grid-cols-1 md:grid-cols-3 gap-8'>
 							{categories.map((category) => (
-								<Link href={category.link} key={category.title}>
-									<a>
+								<Link  href={category.link} key={category.title}>
+									
 										<StyledCard>
 											<div className='card'>
 												<div className='align'>
@@ -333,7 +333,7 @@ export default function Home() {
 												<p>{category.description}</p>
 											</div>
 										</StyledCard>
-									</a>
+									
 								</Link>
 							))}
 						</motion.div>
